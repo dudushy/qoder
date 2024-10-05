@@ -1,0 +1,383 @@
+<div class="container">
+  <ul class="nav nav-pills nav-fill">
+    <li class="nav-item" role="presentation">
+      <button
+        [class.active]="activeTab == 'generate'"
+        class="nav-link"
+        type="button"
+        (click)="toggleTab('generate')"
+      >
+        Generate
+      </button>
+    </li>
+
+    <li class="nav-item" role="presentation">
+      <button
+        [class.active]="activeTab == 'upload'"
+        class="nav-link disabled"
+        aria-disabled="true"
+        type="button"
+        (click)="toggleTab('upload')"
+      >
+        Upload
+      </button>
+    </li>
+
+    <li class="nav-item" role="presentation">
+      <button
+        [class.active]="activeTab == 'scan'"
+        class="nav-link disabled"
+        aria-disabled="true"
+        type="button"
+        (click)="toggleTab('scan')"
+      >
+        Scan
+      </button>
+    </li>
+  </ul>
+
+  <div class="tab-content p-4 mt-3 border rounded">
+    @if (activeTab == "generate") {
+      <div class="tab-pane fade active show">
+        <div class="form-group">
+          <div class="row">
+            <div class="col mx-auto">
+              <label class="form-label mb-3" for="qrType">QR Type</label>
+            </div>
+
+            <div class="col">
+              <select
+                class="form-select mb-3"
+                id="qrType"
+                #qrType
+                (change)="qrCodeType = qrType.value"
+              >
+                @for (type of qrCodeTypes; track type) {
+                  <option value="{{ type.value }}">{{ type.label }}</option>
+                }
+              </select>
+            </div>
+          </div>
+
+          @switch (qrCodeType) {
+            @case ("wifi") {
+              <div class="row">
+                <div class="col mx-auto">
+                  <label class="form-label mb-3" for="qrInput_ssid">SSID</label>
+                </div>
+
+                <div class="col">
+                  <input
+                    class="form-control mb-3"
+                    type="text"
+                    id="qrInput_ssid"
+                    #qrInput_ssid
+                  />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col mx-auto">
+                  <label class="form-label mb-3" for="qrInput_type">Type</label>
+                </div>
+
+                <div class="col">
+                  <input
+                    class="form-control mb-3"
+                    type="text"
+                    id="qrInput_type"
+                    #qrInput_type
+                  />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col mx-auto">
+                  <label class="form-label mb-3" for="qrInput_password"
+                    >Password</label
+                  >
+                </div>
+
+                <div class="col">
+                  <input
+                    class="form-control mb-3"
+                    type="text"
+                    id="qrInput_password"
+                    #qrInput_password
+                  />
+                </div>
+              </div>
+
+              <button
+                (click)="
+                  onGenerateClick({
+                    ssid: qrInput_ssid.value,
+                    type: qrInput_type.value,
+                    password: qrInput_password.value,
+                  })
+                "
+                class="btn btn-warning w-100"
+              >
+                Proceed
+              </button>
+            }
+
+            @case ("sms") {
+              <div class="row">
+                <div class="col mx-auto"></div>
+
+                <div class="col"></div>
+              </div>
+
+              <div class="row">
+                <div class="col mx-auto"></div>
+
+                <div class="col"></div>
+              </div>
+
+              <div class="col">
+                <label class="form-label mb-3" for="qrInput_number"
+                  >Number</label
+                >
+
+                <input
+                  class="form-control mb-3"
+                  type="text"
+                  id="qrInput_number"
+                  #qrInput_number
+                />
+              </div>
+
+              <div class="col">
+                <label class="form-label mb-3" for="qrInput_message"
+                  >Message</label
+                >
+
+                <input
+                  class="form-control mb-3"
+                  type="text"
+                  id="qrInput_message"
+                  #qrInput_message
+                />
+              </div>
+
+              <button
+                (click)="
+                  onGenerateClick({
+                    number: qrInput_number.value,
+                    message: qrInput_message.value,
+                  })
+                "
+                class="btn btn-warning w-100"
+              >
+                Proceed
+              </button>
+            }
+
+            @case ("geo") {
+              <div class="row">
+                <div class="col mx-auto">
+                  <label class="form-label mb-3" for="qrInput_latitude"
+                    >Latitude</label
+                  >
+                </div>
+
+                <div class="col">
+                  <input
+                    class="form-control mb-3"
+                    type="text"
+                    id="qrInput_latitude"
+                    #qrInput_latitude
+                  />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col mx-auto">
+                  <label class="form-label mb-3" for="qrInput_longitude"
+                    >Longitude</label
+                  >
+                </div>
+
+                <div class="col">
+                  <input
+                    class="form-control mb-3"
+                    type="text"
+                    id="qrInput_longitude"
+                    #qrInput_longitude
+                  />
+                </div>
+              </div>
+
+              <button
+                (click)="
+                  onGenerateClick({
+                    latitude: qrInput_latitude.value,
+                    longitude: qrInput_longitude.value,
+                  })
+                "
+                class="btn btn-warning w-100"
+              >
+                Proceed
+              </button>
+            }
+
+            @case ("contact") {
+              <div class="row">
+                <div class="col mx-auto">
+                  <label class="form-label mb-3" for="qrInput_name">Name</label>
+                </div>
+
+                <div class="col">
+                  <input
+                    class="form-control mb-3"
+                    type="text"
+                    id="qrInput_name"
+                    #qrInput_name
+                  />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col mx-auto">
+                  <label class="form-label mb-3" for="qrInput_organization"
+                    >Organization</label
+                  >
+                </div>
+
+                <div class="col">
+                  <input
+                    class="form-control mb-3"
+                    type="text"
+                    id="qrInput_organization"
+                    #qrInput_organization
+                  />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col mx-auto">
+                  <label class="form-label mb-3" for="qrInput_phone"
+                    >Phone</label
+                  >
+                </div>
+
+                <div class="col">
+                  <input
+                    class="form-control mb-3"
+                    type="text"
+                    id="qrInput_phone"
+                    #qrInput_phone
+                  />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col mx-auto">
+                  <label class="form-label mb-3" for="qrInput_email"
+                    >Email</label
+                  >
+                </div>
+
+                <div class="col">
+                  <input
+                    class="form-control mb-3"
+                    type="text"
+                    id="qrInput_email"
+                    #qrInput_email
+                  />
+                </div>
+              </div>
+
+              <button
+                (click)="
+                  onGenerateClick({
+                    name: qrInput_name.value,
+                    organization: qrInput_organization.value,
+                    phone: qrInput_phone.value,
+                    email: qrInput_email.value,
+                  })
+                "
+                class="btn btn-warning w-100"
+              >
+                Proceed
+              </button>
+            }
+
+            @default {
+              <div class="row">
+                <div class="col mx-auto">
+                  <label class="form-label mb-3" for="qrInput">Data</label>
+                </div>
+
+                <div class="col">
+                  <input
+                    class="form-control mb-3"
+                    type="text"
+                    id="qrInput"
+                    #qrInput
+                  />
+                </div>
+              </div>
+
+              <button
+                (click)="onGenerateClick(qrInput.value)"
+                class="btn btn-warning w-100"
+              >
+                Proceed
+              </button>
+            }
+          }
+        </div>
+
+        @if (qrCodeImage) {
+          <div class="mt-4 text-center">
+            <img
+              [src]="qrCodeImage"
+              class="img-fluid mt-3 rounded mx-auto d-block img-thumbnail qrCodeImage"
+            />
+          </div>
+        }
+      </div>
+    }
+
+    @if (activeTab == "upload") {
+      <div class="tab-pane fade active show">
+        <div class="form-group mb-3">
+          <label for="qrFileInput">Upload a QR Code Image</label>
+          <input
+            type="file"
+            class="form-control"
+            id="qrFileInput"
+            (change)="onUploadFile($event)"
+          />
+        </div>
+
+        @if (uploadedResult) {
+          <div class="mt-4">
+            <p>Uploaded QR Code Result: {{ uploadedResult }}</p>
+          </div>
+        }
+      </div>
+    }
+
+    @if (activeTab == "scan") {
+      <div class="tab-pane fade active show">
+        <h5>Scan QR Code Using Camera</h5>
+        <zxing-scanner (scanSuccess)="onCodeResult($event)"></zxing-scanner>
+
+        @if (scannedResult) {
+          <div class="mt-4">
+            <p>Scanned Result: {{ scannedResult }}</p>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>
+
+@if (!app.ENV.production) {
+  <div class="debug bg-black text-info p-4 mt-4">
+    <pre>{{ debug }}</pre>
+  </div>
+}

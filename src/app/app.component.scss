@@ -1,0 +1,77 @@
+@import "../styles.scss";
+
+header {
+  img {
+    --imageSize: 2.5rem;
+
+    @include fixedSquare(var(--imageSize));
+
+    @include breakpoint(sm) {
+      --imageSize: 2.5rem;
+    }
+
+    @include breakpoint(md) {
+      --imageSize: 3rem;
+    }
+
+    @include breakpoint(lg) {
+      --imageSize: 3rem;
+    }
+
+    @include breakpoint(xl) {
+      --imageSize: 3rem;
+    }
+
+    @include breakpoint(xxl) {
+      --imageSize: 3rem;
+    }
+  }
+
+  .navbar-toggler-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: none;
+
+    i {
+      font-size: 2rem;
+    }
+  }
+}
+
+main {
+  position: relative;
+
+  &[isLoading="true"] {
+    cursor: progress;
+
+    &::before {
+      pointer-events: none;
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+
+    .loading {
+      display: flex;
+    }
+  }
+
+  .loading {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: 9999;
+  }
+}
+
+.debug {
+  #breakpoint {
+    &::before {
+      content: "breakpoint = " var(--shy-current-breakpoint);
+    }
+  }
+}

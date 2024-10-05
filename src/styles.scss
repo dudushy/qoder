@@ -1,0 +1,148 @@
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+/* Importing Bootstrap SCSS file. */
+@import "bootstrap/scss/bootstrap";
+
+// Breakpoint Handling
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+@mixin breakpoint($size: xs) {
+  @media (min-width: map-get($breakpoints, $size)) {
+    @content;
+  }
+}
+
+// Size Mixins
+@mixin fixedSize($property, $value) {
+  #{$property}: $value;
+  min-#{$property}: $value;
+  max-#{$property}: $value;
+}
+
+@mixin fixedHeight($height) {
+  @include fixedSize(height, $height);
+}
+
+@mixin fixedWidth($width) {
+  @include fixedSize(width, $width);
+}
+
+@mixin fixedSquare($size) {
+  @include fixedHeight($size);
+  @include fixedWidth($size);
+}
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+// Vendor Prefix Mixin
+@mixin allVendors($property, $args...) {
+  @each $prefix in ("-webkit-", "-moz-", "-ms-", "-o-", "") {
+    #{$prefix + $property}: $args;
+  }
+}
+
+// Color Variables
+$shy-color-primary: #fac051;
+$shy-color-secondary: #483f76;
+$shy-color-tertiary: #05c1a1;
+$shy-color-light: #ffffff;
+$shy-color-medium: #7b7b7b;
+$shy-color-dark: #000000;
+$shy-color-success: #56c181;
+$shy-color-warning: #ffc107;
+$shy-color-danger: #dc3545;
+$shy-color-info: #17a2b8;
+
+// Root Variables Output
+:root {
+  // Color variables
+  --shy-color-primary: #fac051;
+  --shy-color-secondary: #483f76;
+  --shy-color-tertiary: #05c1a1;
+  --shy-color-light: #ffffff;
+  --shy-color-medium: #7b7b7b;
+  --shy-color-dark: #000000;
+  --shy-color-success: #56c181;
+  --shy-color-warning: #ffc107;
+  --shy-color-danger: #dc3545;
+  --shy-color-info: #17a2b8;
+
+  // Dynamic height (default fallback)
+  --shy-dynamic-height: 100vh;
+
+  // Dynamic width (default fallback)
+  --shy-dynamic-width: 100vw;
+
+  // Responsive unit
+  --shy-responsive-unit-base: calc(1vmin + 1vmax + 1rem);
+  --shy-responsive-unit-multiplier: 1;
+  --shy-responsive-unit: calc(var(--shy-responsive-unit-base) * var(--shy-responsive-unit-multiplier));
+
+  // Font family
+  --shy-font-family: "Roboto", sans-serif;
+
+  // Supports: Dynamic height
+  @supports (height: 100dvh) {
+    --shy-dynamic-height: 100dvh;
+  }
+
+  // Supports: Dynamic width
+  @supports (width: 100dvw) {
+    --shy-dynamic-width: 100dvw;
+  }
+
+  --shy-current-breakpoint: "xs";
+
+  // Media Queries: Responsive Unit Multiplier and Current Breakpoint
+  @include breakpoint(sm) {
+    --shy-responsive-unit-multiplier: 1.1;
+
+    --shy-current-breakpoint: "sm";
+  }
+
+  @include breakpoint(md) {
+    --shy-responsive-unit-multiplier: 1.2;
+
+    --shy-current-breakpoint: "md";
+  }
+
+  @include breakpoint(lg) {
+    --shy-responsive-unit-multiplier: 1.3;
+
+    --shy-current-breakpoint: "lg";
+  }
+
+  @include breakpoint(xl) {
+    --shy-responsive-unit-multiplier: 1.4;
+
+    --shy-current-breakpoint: "xl";
+  }
+
+  @include breakpoint(xxl) {
+    --shy-responsive-unit-multiplier: 1.5;
+
+    --shy-current-breakpoint: "xxl";
+  }
+}
+
+html,
+body,
+app-root {
+  font-family: var(--shy-font-family);
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}

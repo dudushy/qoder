@@ -1,0 +1,105 @@
+<header class="sticky-top border-bottom bg-dark">
+  <nav class="navbar navbar-expand-md">
+    <div class="container-fluid">
+      <a
+        class="navbar-brand d-flex align-items-center fs-1 link-warning"
+        routerLink="/home"
+      >
+        <img
+          src="./assets/images/qoder-icon.png"
+          alt="Logo"
+          class="d-inline-block align-text-top me-3"
+        />
+
+        QodeR
+      </a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon text-warning">
+          <i class="bi bi-list"></i>
+        </span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav nav-underline ms-auto mb-0">
+          <li class="nav-item d-flex justify-content-center">
+            <a
+              class="nav-link"
+              routerLink="/home"
+              routerLinkActive="active"
+              ariaCurrentWhenActive="page"
+              >Home</a
+            >
+          </li>
+
+          <li class="nav-item d-flex justify-content-center">
+            <a
+              class="nav-link"
+              routerLink="/demo"
+              routerLinkActive="active"
+              ariaCurrentWhenActive="page"
+              >Demo</a
+            >
+          </li>
+
+          <li class="nav-item d-flex justify-content-center">
+            <a
+              class="nav-link disabled"
+              aria-disabled="true"
+              routerLink="/download"
+              routerLinkActive="active"
+              ariaCurrentWhenActive="page"
+              >Download</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="container-fluid py-3" [attr.isLoading]="isLoading">
+  <div class="loading rounded">
+    <button class="btn btn-warning" type="button" disabled="">
+      <span
+        class="spinner-border spinner-border-sm me-2"
+        aria-hidden="true"
+      ></span>
+      <span role="status">Loading...</span>
+    </button>
+  </div>
+
+  <router-outlet></router-outlet>
+</main>
+
+<footer
+  class="d-flex flex-wrap justify-content-between align-items-center p-3 border-top text-muted"
+>
+  <div class="col-md-4 d-flex align-items-center">
+    <span class="mb-0 fs-6">© 2024 dudushy</span>
+  </div>
+
+  <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+    <li class="ms-3">
+      <a class="link-warning fs-2" [href]="ENV.repoUrl" target="_blank">
+        <i class="bi bi-github"></i>
+      </a>
+    </li>
+  </ul>
+</footer>
+
+@if (!ENV.production) {
+  <div class="debug bg-black text-info p-4 mt-4">
+    <pre>ENV = {{ ENV | json }}</pre>
+
+    <pre id="breakpoint"></pre>
+  </div>
+}
