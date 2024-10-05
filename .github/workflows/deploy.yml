@@ -41,4 +41,4 @@ jobs:
       - name: Deploy to GitHub Pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx angular-cli-ghpages --dir=dist/qoder/browser --message="Deployed by GitHub Actions"
+        run: npx angular-cli-ghpages --dir=dist/qoder/browser --message="Deployed by GitHub Actions" --no-silent --branch=gh-pages
