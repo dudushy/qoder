@@ -1,6 +1,6 @@
 <p align="center">
-    <a href="https://github.com/dudushy/QodeR">
-        <img src="./assets/QodeR-icon.png" alt="QodeR logo" width="200" height="200">
+    <a href="https://github.com/dudushy/qoder">
+        <img src="./assets/qoder-icon.png" alt="qoder logo" width="200" height="200">
     </a>
 </p>
 
@@ -10,9 +10,9 @@
     Generate or Scan QRCodes.
     <br>
     <br>
-    <a href="https://dudushy.github.io/QodeR">Documentation</a>
+    <a href="https://dudushy.github.io/qoder">Documentation</a>
     ·
-    <a href="https://dudushy.github.io/QodeR/demo">Demo</a>
+    <a href="https://dudushy.github.io/qoder/demo">Demo</a>
 </p>
 
 ![stars][stars] ![watchers][watchers] ![forks][forks] ![issues][issues] ![pull_requests][pull_requests] ![branches][branches]
@@ -33,7 +33,7 @@ npm install -g QodeR
 
 ### 2. Use the Website:
 
-Simply visit [QodeR](https://dudushy.github.io/QodeR) to generate or scan QR codes directly in your browser.
+Simply visit [QodeR](https://dudushy.github.io/qoder) to generate or scan QR codes directly in your browser.
 
 ---
 
@@ -57,7 +57,7 @@ The website allows you to easily generate QR codes for text, URLs, Wi-Fi details
 After installing via npm, you can generate a QR code directly from your terminal:
 
 ```bash
-QodeR --text="Hello, world!"
+qoder --text="Hello, world!"
 ```
 
 This command will generate and display a QR code in your terminal.
@@ -72,15 +72,15 @@ QodeR is licensed under the MIT License. You’re free to use, modify, and distr
 
 ## Useful Links
 
-- [Project Repository](https://github.com/dudushy/QodeR)
-- [Issue Tracker](https://github.com/dudushy/QodeR/issues)
-- [Pull Requests](https://github.com/dudushy/QodeR/pulls)
+- [Project Repository](https://github.com/dudushy/qoder)
+- [Issue Tracker](https://github.com/dudushy/qoder/issues)
+- [Pull Requests](https://github.com/dudushy/qoder/pulls)
 
 ---
 
-[forks]: https://img.shields.io/github/forks/dudushy/QodeR
-[stars]: https://img.shields.io/github/stars/dudushy/QodeR
-[watchers]: https://img.shields.io/github/watchers/dudushy/QodeR
-[issues]: https://badgen.net/github/issues/dudushy/QodeR
-[pull_requests]: https://badgen.net/github/prs/dudushy/QodeR
-[branches]: https://badgen.net/github/branches/dudushy/QodeR
+[forks]: https://img.shields.io/github/forks/dudushy/qoder
+[stars]: https://img.shields.io/github/stars/dudushy/qoder
+[watchers]: https://img.shields.io/github/watchers/dudushy/qoder
+[issues]: https://badgen.net/github/issues/dudushy/qoder
+[pull_requests]: https://badgen.net/github/prs/dudushy/qoder
+[branches]: https://badgen.net/github/branches/dudushy/qoder

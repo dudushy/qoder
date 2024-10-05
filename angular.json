@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "QodeR": {
+    "qoder": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/QodeR",
+            "outputPath": "dist/qoder",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js", "@angular/localize/init"],
@@ -78,10 +78,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "QodeR:build:production"
+              "buildTarget": "qoder:build:production"
             },
             "development": {
-              "buildTarget": "QodeR:build:development"
+              "buildTarget": "qoder:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -118,7 +118,7 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "buildTarget": "QodeR:build:production"
+            "buildTarget": "qoder:build:production"
           }
         }
       }

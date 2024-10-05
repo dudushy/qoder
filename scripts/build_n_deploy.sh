@@ -8,10 +8,10 @@ echo $TITLE "setup config..."
 echo $TITLE "- - - - - - - - - - - - - - - - - - - - - - - - - -"
 #* vars
 
-PAGE_URL="https://dudushy.github.io/QodeR/"
+PAGE_URL="https://dudushy.github.io/qoder/"
 echo $TITLE "- PAGE_URL=" $PAGE_URL
 
-PROJECT_NAME="QodeR"
+PROJECT_NAME="qoder"
 echo $TITLE "- PROJECT_NAME=" $PROJECT_NAME
 
 COMMIT_MESSAGE='`'"${BRANCH_NAME}"':'"${COMMIT_SHORT_HASH}"'`'
