@@ -7,7 +7,7 @@
 <h3 align="center">QodeR</h3>
 
 <p align="center">
-    Generate or Scan QRCodes.
+    Generate or Scan QR Codes.
     <br>
     <br>
     <a href="https://dudushy.github.io/qoder">Documentation</a>
