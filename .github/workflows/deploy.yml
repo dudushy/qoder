@@ -14,11 +14,6 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
 
-      - name: 🛠️ Git Config
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
       - name: 🛠️ Build Angular project
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -26,4 +21,4 @@ jobs:
           npm install -g @angular/cli
           npm ci
           # npm run deploy
-          ng deploy --base-href=https://dudushy.github.io/qoder/
+          ng deploy --base-href=https://dudushy.github.io/qoder/ --repo=https://github.com/dudushy/qoder.git --name="github-actions[bot]" --email=github-actions[bot]@users.noreply.github.com
