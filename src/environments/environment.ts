@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   environment: 'production',
-  repoUrl: 'https://github.com/dudushy/qoder',
+  repoUrl: 'https://github.com/dudushy/QodeR',
 };

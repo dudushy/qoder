@@ -1,5 +1,5 @@
 {
-  "name": "qoder",
+  "name": "QodeR",
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
@@ -7,8 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng deploy --dir=dist/qoder/browser",
-    "serve:ssr:qoder": "node dist/qoder/server/server.mjs"
+    "deploy": "bash ./scripts/build_n_deploy.sh",
+    "serve:ssr:QodeR": "node dist/QodeR/server/server.mjs"
   },
   "private": true,
   "dependencies": {
