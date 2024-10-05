@@ -22,6 +22,11 @@ jobs:
       # - name: Run tests
       #   run: npm run ng -- test --no-watch --no-progress --browsers=ChromeHeadless
 
+      - name: Setup Git Config
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Build and Deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
