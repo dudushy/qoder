@@ -1,24 +1,28 @@
-name: ♻️ Update gh-pages
+name: Deploy to GitHub Pages via angular-cli-ghpages
 
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+on: [push]
 
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: 🚚 Get latest code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: 🛠️ Build Angular project
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm run ng -- test --no-watch --no-progress --browsers=ChromeHeadless
+
+      - name: Prepare and deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          npm install -g @angular/cli
-          npm ci
-          # npm run deploy
-          ng deploy --base-href=https://dudushy.github.io/qoder/ --repo=https://github.com/dudushy/qoder.git --name="github-actions[bot]" --email=github-actions[bot]@users.noreply.github.com
+        run: npm run ng -- deploy --base-href=https://dudushy.github.io/qoder/ --name="github-actions[bot]" --email="github-actions[bot]@users.noreply.github.com"
