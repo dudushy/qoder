@@ -18,4 +18,5 @@ jobs:
         run: |
           npm install -g @angular/cli
           npm ci
-          npm run deploy
+          # npm run deploy
+          ng deploy --base-href=https://dudushy.github.io/qoder/
