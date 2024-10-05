@@ -1,6 +1,9 @@
 name: Deploy to GitHub Pages via angular-cli-ghpages
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build-and-deploy:
@@ -27,15 +30,15 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Build and Deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run deploy
-
-      # - name: Build Angular Project
-      #   run: npm run build -- --configuration=production
-
-      # - name: Deploy to GitHub Pages
+      # - name: Build and Deploy
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   run: npx angular-cli-ghpages --dir=dist/qoder --message="Deployed by GitHub Actions"
+      #   run: npm run deploy
+
+      - name: Build Angular Project
+        run: npm run build -- --configuration=production
+
+      - name: Deploy to GitHub Pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx angular-cli-ghpages --dir=dist/qoder/browser --message="Deployed by GitHub Actions"
