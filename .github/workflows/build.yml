@@ -58,6 +58,8 @@ jobs:
 
       - name: Restore build files
         run: |
+          # Remove existing files before copying new ones
+          rm -rf ./*
           cp -r /tmp/gh-pages/* ./
 
       - name: Add build files
@@ -69,8 +71,10 @@ jobs:
             echo "No changes to commit."
             exit 0
           fi
+        continue-on-error: true # Allow workflow to continue without failing
 
       - name: Commit and push the changes
+        if: ${{ success() }} # Only run if the previous steps were successful
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
