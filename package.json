@@ -8,7 +8,6 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "deploy": "ng deploy --base-href=https://dudushy.github.io/qoder/ --repo=https://github.com/dudushy/qoder.git",
-    "action-deploy": "ng deploy --base-href=https://dudushy.github.io/qoder/ --repo=https://github.com/dudushy/qoder.git --name=\"github-actions[bot]\" --email=\"github-actions[bot]@users.noreply.github.com\"",
     "serve:ssr:qoder": "node dist/qoder/server/server.mjs"
   },
   "private": true,
