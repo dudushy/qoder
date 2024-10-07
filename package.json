@@ -7,6 +7,7 @@
     "build": "ng build --deploy-url https://dudushy.github.io/qoder",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "deploy": "ng deploy --base-href=/qoder/",
     "serve:ssr:qoder": "node dist/qoder/server/server.mjs"
   },
   "private": true,
