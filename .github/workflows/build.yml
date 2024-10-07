@@ -1,0 +1,79 @@
+# Workflow to build and push static content to the gh-pages branch
+name: Build and Push to gh-pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow writing to the repository
+permissions:
+  contents: write
+
+jobs:
+  # Single job to build and push content
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Save build files temporarily
+        run: |
+          mkdir -p /tmp/gh-pages
+          cp -r ./dist/${{ github.event.repository.name }}/browser/* /tmp/gh-pages/
+
+      - name: Setup Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Force checkout to gh-pages branch
+        run: |
+          if git ls-remote --exit-code --heads origin gh-pages; then
+            git fetch origin gh-pages
+            git checkout -B gh-pages origin/gh-pages --force
+          else
+            git checkout --orphan gh-pages
+            git reset --hard
+            git commit --allow-empty -m "Initial commit on gh-pages branch"
+            git push origin gh-pages
+            git checkout gh-pages
+          fi
+
+      - name: Restore build files
+        run: |
+          cp -r /tmp/gh-pages/* ./
+
+      - name: Add build files
+        run: git add .
+
+      - name: Check if there are changes to commit
+        run: |
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+      - name: Commit and push the changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TIMESTAMP=$(date +"%d-%B-%Y %I:%M:%S %p")
+          git commit -m "🔄 Build and push static content" -m "${TIMESTAMP}"
+          git push origin gh-pages
