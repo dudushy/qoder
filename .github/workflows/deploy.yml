@@ -22,4 +22,4 @@ jobs:
         run: npm ci
 
       - name: Build project
-        run: ng deploy --base-href=https://dudushy.github.io/qoder/ --repo=https://github.com/dudushy/qoder.git --name="github-actions[bot]" --email="github-actions[bot]@users.noreply.github.com"
+        run: npm run action-deploy
