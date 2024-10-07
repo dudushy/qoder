@@ -21,5 +21,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build project
-        run: npm run action-deploy
+      # - name: Run tests
+      #   run: npm run ng -- test --no-watch --no-progress --browsers=ChromeHeadless
+
+      - name: Prepare and deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TIMESTAMP=$(date +"%d-%B-%Y %I:%M:%S %p")
+          npm run ng -- deploy --base-href=https://dudushy.github.io/qoder/ --repo=https://github.com/dudushy/qoder.git --name="github-actions[bot]" --email="github-actions[bot]@users.noreply.github.com" --message="Deployed by GitHub Actions [\`${GITHUB_REF#refs/heads/}\`] @ ${TIMESTAMP}"
