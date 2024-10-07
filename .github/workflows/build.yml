@@ -75,5 +75,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TIMESTAMP=$(date +"%d-%B-%Y %I:%M:%S %p")
-          git commit -m "🔄 Build and push from \`${GITHUB_REF#refs/heads/}\" -m "${TIMESTAMP}"
+          git commit -m "🔄 Build and push from \`${GITHUB_REF#refs/heads/}\`" -m "${TIMESTAMP}"
           git push origin gh-pages
