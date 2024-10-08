@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid col-md-10 col-lg-8">
   <ul class="nav nav-pills nav-fill">
     <li class="nav-item" role="presentation">
       <button
@@ -36,11 +36,11 @@
     </li>
   </ul>
 
-  <div class="tab-content p-4 mt-3 border rounded">
+  <div class="row p-4 mt-3 border rounded">
     @if (activeTab == "generate") {
-      <div class="tab-pane fade active show">
+      <div class="row">
         <div class="form-group">
-          <div class="row">
+          <div class="row d-flex flex-column flex-sm-row">
             <div class="col mx-auto">
               <label class="form-label mb-3" for="qrType">QR Type</label>
             </div>
@@ -61,7 +61,7 @@
 
           @switch (qrCodeType) {
             @case ("wifi") {
-              <div class="row">
+              <div class="row d-flex flex-column flex-sm-row">
                 <div class="col mx-auto">
                   <label class="form-label mb-3" for="qrInput_ssid">SSID</label>
                 </div>
@@ -76,7 +76,7 @@
                 </div>
               </div>
 
-              <div class="row">
+              <div class="row d-flex flex-column flex-sm-row">
                 <div class="col mx-auto">
                   <label class="form-label mb-3" for="qrInput_type">Type</label>
                 </div>
@@ -91,7 +91,7 @@
                 </div>
               </div>
 
-              <div class="row">
+              <div class="row d-flex flex-column flex-sm-row">
                 <div class="col mx-auto">
                   <label class="form-label mb-3" for="qrInput_password"
                     >Password</label
@@ -123,42 +123,38 @@
             }
 
             @case ("sms") {
-              <div class="row">
-                <div class="col mx-auto"></div>
+              <div class="row d-flex flex-column flex-sm-row">
+                <div class="col mx-auto">
+                  <label class="form-label mb-3" for="qrInput_number"
+                    >Number</label
+                  >
+                </div>
 
-                <div class="col"></div>
+                <div class="col">
+                  <input
+                    class="form-control mb-3"
+                    type="text"
+                    id="qrInput_number"
+                    #qrInput_number
+                  />
+                </div>
               </div>
 
-              <div class="row">
-                <div class="col mx-auto"></div>
+              <div class="row d-flex flex-column flex-sm-row">
+                <div class="col mx-auto">
+                  <label class="form-label mb-3" for="qrInput_message"
+                    >Message</label
+                  >
+                </div>
 
-                <div class="col"></div>
-              </div>
-
-              <div class="col">
-                <label class="form-label mb-3" for="qrInput_number"
-                  >Number</label
-                >
-
-                <input
-                  class="form-control mb-3"
-                  type="text"
-                  id="qrInput_number"
-                  #qrInput_number
-                />
-              </div>
-
-              <div class="col">
-                <label class="form-label mb-3" for="qrInput_message"
-                  >Message</label
-                >
-
-                <input
-                  class="form-control mb-3"
-                  type="text"
-                  id="qrInput_message"
-                  #qrInput_message
-                />
+                <div class="col">
+                  <input
+                    class="form-control mb-3"
+                    type="text"
+                    id="qrInput_message"
+                    #qrInput_message
+                  />
+                </div>
               </div>
 
               <button
@@ -175,7 +171,7 @@
             }
 
             @case ("geo") {
-              <div class="row">
+              <div class="row d-flex flex-column flex-sm-row">
                 <div class="col mx-auto">
                   <label class="form-label mb-3" for="qrInput_latitude"
                     >Latitude</label
@@ -192,7 +188,7 @@
                 </div>
               </div>
 
-              <div class="row">
+              <div class="row d-flex flex-column flex-sm-row">
                 <div class="col mx-auto">
                   <label class="form-label mb-3" for="qrInput_longitude"
                     >Longitude</label
@@ -223,7 +219,7 @@
             }
 
             @case ("contact") {
-              <div class="row">
+              <div class="row d-flex flex-column flex-sm-row">
                 <div class="col mx-auto">
                   <label class="form-label mb-3" for="qrInput_name">Name</label>
                 </div>
@@ -238,7 +234,7 @@
                 </div>
               </div>
 
-              <div class="row">
+              <div class="row d-flex flex-column flex-sm-row">
                 <div class="col mx-auto">
                   <label class="form-label mb-3" for="qrInput_organization"
                     >Organization</label
@@ -255,7 +251,7 @@
                 </div>
               </div>
 
-              <div class="row">
+              <div class="row d-flex flex-column flex-sm-row">
                 <div class="col mx-auto">
                   <label class="form-label mb-3" for="qrInput_phone"
                     >Phone</label
@@ -272,7 +268,7 @@
                 </div>
               </div>
 
-              <div class="row">
+              <div class="row d-flex flex-column flex-sm-row">
                 <div class="col mx-auto">
                   <label class="form-label mb-3" for="qrInput_email"
                     >Email</label
@@ -305,7 +301,7 @@
             }
 
             @default {
-              <div class="row">
+              <div class="row d-flex flex-column flex-sm-row">
                 <div class="col mx-auto">
                   <label class="form-label mb-3" for="qrInput">Data</label>
                 </div>
@@ -331,7 +327,7 @@
         </div>
 
         @if (qrCodeImage) {
-          <div class="mt-4 text-center">
+          <div class="mt-4 mb-2 text-center">
             <img
               [src]="qrCodeImage"
               class="img-fluid mt-3 rounded mx-auto d-block img-thumbnail qrCodeImage"
@@ -342,7 +338,7 @@
     }
 
     @if (activeTab == "upload") {
-      <div class="tab-pane fade active show">
+      <div class="row">
         <div class="form-group mb-3">
           <label for="qrFileInput">Upload a QR Code Image</label>
           <input
@@ -362,7 +358,7 @@
     }
 
     @if (activeTab == "scan") {
-      <div class="tab-pane fade active show">
+      <div class="row">
         <h5>Scan QR Code Using Camera</h5>
         <zxing-scanner (scanSuccess)="onCodeResult($event)"></zxing-scanner>
 

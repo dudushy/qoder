@@ -23,25 +23,25 @@
 }
 
 .qrCodeImage {
-  --imageSize: 10rem;
+  --imageSize: 100%;
 
   @include fixedSquare(var(--imageSize));
 
   @include breakpoint(sm) {
-    --imageSize: 15rem;
-  }
-
-  @include breakpoint(md) {
-    --imageSize: 20rem;
-  }
-
-  @include breakpoint(lg) {
     --imageSize: 25rem;
   }
 
-  @include breakpoint(xl) {
-    --imageSize: 30rem;
+  @include breakpoint(md) {
+    --imageSize: 27.5rem;
   }
+
+  @include breakpoint(lg) {
+    --imageSize: 32.5rem;
+  }
+
+  // @include breakpoint(xl) {
+  //   --imageSize: 35rem;
+  // }
 
   @include breakpoint(xxl) {
     --imageSize: 35rem;
