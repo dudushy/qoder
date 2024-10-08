@@ -10,7 +10,7 @@
     Generate or Scan QR Codes.
     <br>
     <br>
-    <a href="https://dudushy.github.io/qoder">Documentation</a>
+    <a href="https://dudushy.github.io/qoder">Home</a>
     ·
     <a href="https://dudushy.github.io/qoder/demo">Demo</a>
 </p>
@@ -19,27 +19,7 @@
 
 ---
 
-## Installation
-
-Install QodeR using npm to include it as a dependency in your project or use the website to generate or scan QR codes directly in your browser:
-
-### 1. Via NPM:
-
-Install QodeR CLI tool to include it as a global utility:
-
-```bash
-npm install -g QodeR
-```
-
-### 2. Use the Website:
-
-Simply visit [QodeR](https://dudushy.github.io/qoder) to generate or scan QR codes directly in your browser.
-
----
-
 ## Usage
-
-### 1. Website Usage
 
 The website allows you to easily generate QR codes for text, URLs, Wi-Fi details, and more.
 
@@ -51,16 +31,6 @@ The website allows you to easily generate QR codes for text, URLs, Wi-Fi details
 - **Scan QR Code**:
   - Allow access to your camera.
   - Hold the QR code in front of the scanner and see the result instantly.
-
-### 2. CLI Usage
-
-After installing via npm, you can generate a QR code directly from your terminal:
-
-```bash
-qoder --text="Hello, world!"
-```
-
-This command will generate and display a QR code in your terminal.
 
 ---
 
